@@ -37,7 +37,7 @@ public Plugin myinfo =
     name = "Team Logo Management",
     author = "Neuro Toxin",
     description = "",
-    version = "1.4.2"
+    version = "1.4.2panorama"
 };
 
 public void OnPluginStart()
@@ -191,11 +191,9 @@ stock void AddTeamLogosToDownloadTable()
 		LogError("[SM] Unable to read directory: 'resource/flash/econ/tournaments/teams'");
 		return;
 	}
-	
 	FileType type;
 	char filename[PLATFORM_MAX_PATH];
 	char fullpath[PLATFORM_MAX_PATH];
-	
 	while (ReadDirEntry(dir, filename, sizeof(filename), type))
 	{
 		if (type != FileType_File)
@@ -214,7 +212,34 @@ stock void AddTeamLogosToDownloadTable()
 			PushArrayString(g_hTeamLogos, filename);
 		}
 	}
+	CloseHandle(dir);
 	
+	// check for Panorama UI images
+	dir = OpenDirectory("materials/panorama/images/tournaments/teams/");
+	if (dir == null)
+	{
+		LogError("[SM] Unable to read directory: 'materials/panorama/images/tournaments/teams'");
+		return;
+	}
+	
+	while (ReadDirEntry(dir, filename, sizeof(filename), type))
+	{
+		if (type != FileType_File)
+			continue;
+		
+		if (!StrEqual(filename[strlen(filename) - 4], ".svg") && !StrEqual(filename[strlen(filename) - 4], ".png"))
+			continue;
+		
+		PrintToServer("[SM] Loading team logo: %s", filename);
+		Format(fullpath, sizeof(fullpath), "materials/panorama/images/tournaments/teams/%s", filename);
+		AddFileToDownloadsTable(fullpath);
+		
+		if (g_bRandomLogos)
+		{
+			filename[strlen(filename) - 4] = '\0';
+			PushArrayString(g_hTeamLogos, filename);
+		}
+	}
 	CloseHandle(dir);
 }
 
@@ -258,37 +283,89 @@ stock void AddDefaultTeamLogos()
 {
 	PushArrayString(g_hTeamLogos, "3dm");
 	PushArrayString(g_hTeamLogos, "ad");
+	PushArrayString(g_hTeamLogos, "astr");
+	PushArrayString(g_hTeamLogos, "avg");
+	PushArrayString(g_hTeamLogos, "big");
 	PushArrayString(g_hTeamLogos, "bravg");
 	PushArrayString(g_hTeamLogos, "c9");
+	PushArrayString(g_hTeamLogos, "c9g");
+	PushArrayString(g_hTeamLogos, "clg");
 	PushArrayString(g_hTeamLogos, "cm");
 	PushArrayString(g_hTeamLogos, "col");
 	PushArrayString(g_hTeamLogos, "cw");
 	PushArrayString(g_hTeamLogos, "dat");
+	PushArrayString(g_hTeamLogos, "dh13aa");
+	PushArrayString(g_hTeamLogos, "dh13ab");
 	PushArrayString(g_hTeamLogos, "dig");
+	PushArrayString(g_hTeamLogos, "e6ten");
+	PushArrayString(g_hTeamLogos, "ebet");
 	PushArrayString(g_hTeamLogos, "eps");
 	PushArrayString(g_hTeamLogos, "esc");
+	PushArrayString(g_hTeamLogos, "faze");
+	PushArrayString(g_hTeamLogos, "flg");
 	PushArrayString(g_hTeamLogos, "flip");
 	PushArrayString(g_hTeamLogos, "fntc");
+	PushArrayString(g_hTeamLogos, "g2");
+	PushArrayString(g_hTeamLogos, "gamb");
+	PushArrayString(g_hTeamLogos, "god");
 	PushArrayString(g_hTeamLogos, "hlr");
 	PushArrayString(g_hTeamLogos, "ibp");
+	PushArrayString(g_hTeamLogos, "im");
+	PushArrayString(g_hTeamLogos, "imt");
 	PushArrayString(g_hTeamLogos, "indw");
+	PushArrayString(g_hTeamLogos, "keyd");
+	PushArrayString(g_hTeamLogos, "king");
 	PushArrayString(g_hTeamLogos, "lc");
 	PushArrayString(g_hTeamLogos, "ldlc");
 	PushArrayString(g_hTeamLogos, "lgb");
+	PushArrayString(g_hTeamLogos, "liq");
+	PushArrayString(g_hTeamLogos, "lumi");
+	PushArrayString(g_hTeamLogos, "lumik");
+	PushArrayString(g_hTeamLogos, "mfg");
+	PushArrayString(g_hTeamLogos, "mibr");
 	PushArrayString(g_hTeamLogos, "mss");
 	PushArrayString(g_hTeamLogos, "myxmg");
 	PushArrayString(g_hTeamLogos, "navi");
+	PushArrayString(g_hTeamLogos, "nf");
 	PushArrayString(g_hTeamLogos, "nip");
+	PushArrayString(g_hTeamLogos, "nipta");
+	PushArrayString(g_hTeamLogos, "niptb");
+	PushArrayString(g_hTeamLogos, "nologo");
+	PushArrayString(g_hTeamLogos, "nor");
+	PushArrayString(g_hTeamLogos, "nosticker");
+	PushArrayString(g_hTeamLogos, "nv");
+	PushArrayString(g_hTeamLogos, "optc");
+	PushArrayString(g_hTeamLogos, "orbit");
 	PushArrayString(g_hTeamLogos, "penta");
 	PushArrayString(g_hTeamLogos, "pkd");
+	PushArrayString(g_hTeamLogos, "qb");
 	PushArrayString(g_hTeamLogos, "r");
+	PushArrayString(g_hTeamLogos, "ren");
 	PushArrayString(g_hTeamLogos, "rgg");
+	PushArrayString(g_hTeamLogos, "rog");
+	PushArrayString(g_hTeamLogos, "sk");
+	PushArrayString(g_hTeamLogos, "spc");
+	PushArrayString(g_hTeamLogos, "spir");
+	PushArrayString(g_hTeamLogos, "splc");
+	PushArrayString(g_hTeamLogos, "spr");
+	PushArrayString(g_hTeamLogos, "steu");
+	PushArrayString(g_hTeamLogos, "stus");
+	PushArrayString(g_hTeamLogos, "thv");
 	PushArrayString(g_hTeamLogos, "tit");
+	PushArrayString(g_hTeamLogos, "tsm");
+	PushArrayString(g_hTeamLogos, "tsolo");
+	PushArrayString(g_hTeamLogos, "tyl");
+	PushArrayString(g_hTeamLogos, "us");
 	PushArrayString(g_hTeamLogos, "v");
 	PushArrayString(g_hTeamLogos, "v2");
 	PushArrayString(g_hTeamLogos, "ve");
+	PushArrayString(g_hTeamLogos, "vega");
+	PushArrayString(g_hTeamLogos, "vex");
 	PushArrayString(g_hTeamLogos, "vg");
 	PushArrayString(g_hTeamLogos, "vp");
+	PushArrayString(g_hTeamLogos, "wgg");
+	PushArrayString(g_hTeamLogos, "wins");
+	PushArrayString(g_hTeamLogos, "xapso");
 }
 
 stock void SetTeamName(const char[] logo, int team)
