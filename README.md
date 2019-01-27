@@ -1,7 +1,7 @@
 # CSGO-Team-Logo-Manager
 **Roughly** updated version of [Team Logo Manager](https://forums.alliedmods.net/showthread.php?t=258206) with Panorama UI directory and default logos
 
-Compiled .smx located in [releases section](https://github.com/uspeek/CSGO-Team-Logo-Manager).
+Compiled .smx located in [releases section](https://github.com/uspeek/CSGO-Team-Logo-Manager/releases).
 
 Last default logos update: FACEIT London 2018 Major
 
