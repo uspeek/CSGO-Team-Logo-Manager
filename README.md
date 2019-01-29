@@ -7,7 +7,7 @@ Last default logos update: FACEIT London 2018 Major
 
 SVG Logos have to be added into `materials/panorama/images/tournaments/teams` directory.
 
-PNG Logos may be added into any of `materials/panorama/images/tournaments/teams` or `csgo/resource/flash/econ/tournaments/teams` directories.
+PNG Logos may be added into any of `materials/panorama/images/tournaments/teams` or `resource/flash/econ/tournaments/teams` directories.
 
 ---
 Credits to Neuro Toxin (ntoxin66) for his [original plugin](https://github.com/ntoxin66/CSGO-Team-Logo-Manager)
